@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+                document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M15</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a trabajar con una técnica avanzada llamada 'Priming Prompts' para guiar las respuestas de la IA hacia nuestros objetivos. ¡Empecemos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo están hoy. Si están súper emocionados, levanten una mano. Si están un poco tranquilos pero listos para aprender, toquen su nariz con un dedo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender algo nuevo y emocionante. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy nos enfocaremos en tres objetivos clave: 1. Aprender a crear Priming Prompts. 2. Guiar las respuestas de la IA hacia un propósito claro. 3. Aplicar esta técnica en un contexto práctico para resolver problemas."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 3.5 minutos</div>
+        <div class="subtitle">Explorar cómo 'Priming Prompts' optimizan interacciones con IA.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy exploraremos Ada Support, un chatbot que usa 'Priming Prompts' para anticipar las necesidades del usuario y guiar conversaciones desde el inicio. ¡Veamos cómo funciona!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Demostración de Ada Support".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ada Support utiliza priming prompts para establecer el contexto adecuado desde el inicio de la conversación. Veamos algunos ejemplos de cómo esta técnica mejora la experiencia del usuario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 8 "Reflexión sobre Ada Support".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les parece? Ada Support nos muestra cómo los priming prompts no solo son útiles, sino esenciales para mejorar la eficiencia y precisión en las interacciones con IA. Ahora conectaremos esto con nuestro tema."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 11.5 minutos</div>
+        <div class="subtitle">Introducción y práctica de los 'Priming Prompts' para guiar interacciones con IA.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy aprenderemos una técnica fundamental para mejorar la interacción con los chatbots: los 'Priming Prompts'. Estos sirven para guiar a la IA desde el inicio de una conversación, asegurando que sus respuestas sean útiles, específicas y relevantes. Es como dar una brújula a la IA para que siempre navegue en la dirección correcta. Pero, ¿Qué significa la palabra Priming? El priming es un fenómeno psicológico que ocurre cuando la exposición a un estímulo (como una palabra, imagen o sonido) influye en la respuesta de una persona a estímulos posteriores, sin que se dé cuenta. Por ejemplo, si ves la palabra 'amarillo' y luego te preguntan por un tipo de fruta, ¡es más probable que pienses en un plátano! En nuestro caso en particular, vamos a hacer algo similar con la IA."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "¿Qué es Priming?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El priming es como establecer el escenario para una obra de teatro. Consiste en diseñar el primer mensaje que le damos al chatbot para definir su tono, estilo o propósito. Por ejemplo, si queremos que actúe como un médico, el prompt inicial podría ser: 'Eres un médico general con experiencia en pediatría, y responderás consultas médicas de forma clara y amigable.' Esto cambia por completo la forma en que la IA interactúa, pero no sólo en la respuesta, sino en el resto de esa conversación."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 11 "¿Por qué es útil el Priming?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Priming nos ayuda a evitar respuestas genéricas. Imaginemos que pedimos: 'Escribe una historia sobre un dragón'. Probablemente obtendremos algo genérico, pero si 'primeamos' diciendo: 'Escribe una historia sobre un dragón con escamas de cristal que respira hielo en un mundo cubierto de oscuridad perpetua', la respuesta será mucho más rica y creativa. El priming mejora la precisión y nos permite personalizar las respuestas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "¿Cómo usar Priming?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El priming puede usarse en múltiples contextos. En atención al cliente, podemos hacer que un chatbot use un tono profesional para resolver dudas. En educación, podemos guiar al chatbot para explicar temas complejos en palabras sencillas. También podemos crear personajes específicos, como un historiador, para dar respuestas especializadas. Es una herramienta flexible que adapta la IA a nuestras necesidades."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 13 "Estilizando Conversaciones".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora imaginemos que queremos divertirnos un poco. Podemos pedirle al chatbot que hable como un pirata con el siguiente prompt: 'Eres PirateGPT, y siempre hablas como un pirata.' A partir de ese momento, responderá cosas como: '¡Ahoy, marinero! ¿Qué problema deseas que resolvamos hoy?' Esto muestra cómo podemos dar un estilo único a nuestras interacciones, ajustándolas a diferentes situaciones."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 14 "Consultor de Marketing".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El priming también tiene aplicaciones serias. Por ejemplo, si queremos que el chatbot actúe como un experto en marketing, podemos usar este prompt: 'Eres MarketingGPT, un consultor con 20 años de experiencia en marketing digital. Responde con datos específicos, ejemplos de la industria y evita generalidades.' Esto hará que la IA entregue información clara, profesional y ajustada al contexto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 15 "Plantilla para Estilo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Podemos usar plantillas para garantizar que los prompts sean efectivos. Por ejemplo: 'Escribe como un experto en [tema] con 20 años de experiencia. Prioriza consejos poco convencionales y usa ejemplos detallados.' Esto asegura que la IA siga una estructura clara, adaptándose al campo o estilo requerido. Es especialmente útil en áreas como educación o consultoría."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1 minuto):</strong> Proyectar Diapositiva 16 "Estructurando Conversaciones".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Un chatbot puede ser un gran asistente de escritura si lo estructuramos correctamente. Un buen prompt sería: 'Actúa como un revisor. Evalúa el texto en tres categorías: nivel de escritura, claridad y sugerencias de mejora. Responde siempre siguiendo este formato.' Esto ayuda a obtener retroalimentación organizada y clara, ideal para mejorar ensayos, reportes o cualquier texto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1 minuto):</strong> Proyectar Diapositiva 17 "Casos Especiales: Lenguaje Tóxico".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En entornos como atención al cliente o comunidades en línea, podemos primar al chatbot para identificar y bloquear lenguaje ofensivo. Por ejemplo, el prompt podría ser: 'Si detectas lenguaje tóxico, responde con: Esto no está permitido, por favor reformula tu mensaje.' Esto ayuda a mantener un ambiente seguro y profesional en las interacciones."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1 minuto):</strong> Proyectar Diapositiva 18 "Detección de Fraude".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En contextos financieros, podemos primar al chatbot para que detecte actividades sospechosas y solicite verificación antes de proceder. Un ejemplo sería: 'Si detectas algo sospechoso, pide un código de verificación. Si no se puede verificar, escala el caso a un humano.' Esto es crucial para proteger transacciones y garantizar la seguridad."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Conclusión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Priming es una herramienta poderosa para personalizar interacciones con IA. Desde estilizar respuestas hasta manejar casos complejos, nos permite controlar el comportamiento de la IA y alinear sus respuestas con nuestras necesidades específicas. Su flexibilidad lo hace invaluable en educación, negocios y seguridad."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy avanzamos mucho. Aprendimos a crear Priming Prompts, explorar cómo estilizar respuestas con ejemplos claros, y utilizarlos en contextos prácticos como detección de fraude o lenguaje. ¡Gran trabajo, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🧘‍♂️ Actividad 4: State Change ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Realizar un ejercicio breve para activar cuerpo y mente.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Desafío de Equilibrio".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora vamos a realizar un breve desafío para activar nuestra mente y cuerpo. Pónganse de pie, vamos a practicar el equilibrio. Primero, manténganse sobre una pierna durante 30 segundos. Luego cambiamos de pierna."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Cronómetro - 30 segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Reflexión del Desafío".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Excelente trabajo, Genios. Este ejercicio no solo fortalece el equilibrio físico, sino que también mejora nuestra concentración. Estas habilidades son clave para mantener el enfoque en tareas desafiantes, como las que hacemos con IA."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formar equipos y preparar materiales para la actividad.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 24 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para la siguiente actividad vamos a formar equipos de 4 personas. Procuren trabajar con compañeros distintos a los de misiones anteriores. Tendrán 1 minuto para organizarse."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 25 "Tiempo para Formar Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 26 "Recolectar Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus equipos, necesito que un representante de cada equipo pase a recoger las Magic Tablets. Tendrán 1 minuto para hacerlo. ¡Vamos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 27 "Tiempo para Recolectar Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 19 minutos</div>
+        <div class="subtitle">Diseñar, probar y ajustar un chatbot con priming prompts.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 28 "Título del Desafío".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora de poner en práctica todo lo que hemos aprendido sobre 'Priming Prompts'. Hoy diseñaremos, probaremos y ajustaremos un chatbot que pueda brindar un servicio al cliente eficiente y profesional. Vamos a trabajar en equipos y vivir una experiencia completa de cómo entrenar y perfeccionar una inteligencia artificial para escenarios reales. ¡Comencemos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 29 "Explicación del Desafío".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El desafío tiene varias etapas. Comenzaremos entendiendo el contexto del servicio al cliente de una empresa ficticia, luego analizaremos preguntas comunes de los clientes y crearemos un priming prompt detallado. Más adelante, probaremos el chatbot con consultas reales, daremos y recibiremos retroalimentación, haremos ajustes y finalmente reflexionaremos sobre el impacto de este proceso. Cada etapa nos ayudará a ver cómo los priming prompts pueden transformar las interacciones con IA. ¡Estén atentos en cada paso!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 30 "Etapa 1: Entendiendo la Empresa".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En esta primera etapa, se sumergirán en el perfil de una empresa que vende productos tecnológicos eco-amigables. Revisen su misión, visión y valores para entender su propósito. También estudien sus guías de comunicación, incluyendo el tono amigable, profesional y bilingüe, y las frases recomendadas o a evitar. Esta información será clave para diseñar un chatbot que represente correctamente a la empresa. Tómense unos minutos para analizar estos documentos antes de continuar."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 31 "Cronómetro - Etapa 1".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 32 "Etapa 2: Preguntas Comunes".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora revisen una lista de preguntas frecuentes de los clientes sobre productos, envíos, devoluciones y soporte técnico. Identifiquen qué información necesita el chatbot para responder con precisión y estilo profesional. También analicen ejemplos de respuestas ya redactadas para captar el tono adecuado. Esto les permitirá comprender las expectativas de los clientes y cómo guiar mejor al chatbot."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (3 minutos):</strong> Proyectar Diapositiva 33 "Cronómetro - Etapa 2".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 34 "Etapa 3: Creando el Prompt".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora diseñen un priming prompt efectivo para el chatbot. Incluyan elementos clave como: 1) el rol del chatbot (representante de servicio al cliente), 2) el tono y estilo deseado (amigable, profesional y bilingüe), y 3) instrucciones claras para estructurar respuestas. Utilicen la plantilla proporcionada para asegurarse de que el prompt sea completo. Recuerden incluir ejemplos de preguntas y respuestas ideales para guiar al chatbot."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (3 minutos):</strong> Proyectar Diapositiva 35 "Cronómetro - Etapa 3".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 36 "Etapa 4: Pruebas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora intercambien su chatbot con otro equipo para realizar pruebas. Simulen ser clientes ingresando diferentes preguntas y registren las respuestas del chatbot en un registro de interacciones. Evalúen si las respuestas son precisas, útiles y si reflejan correctamente los lineamientos de la empresa. Este ejercicio les ayudará a identificar áreas de mejora."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (5 minutos):</strong> Proyectar Diapositiva 37 "Cronómetro - Etapa 4".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 38 "Etapa 5: Retroalimentación".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Analicen las respuestas del chatbot del equipo contrario utilizando la hoja de evaluación. Identifiquen fortalezas y áreas de mejora, como precisión, tono, y utilidad. Luego compartan su retroalimentación de manera constructiva y respetuosa para ayudarles a mejorar."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (3 minutos):</strong> Proyectar Diapositiva 39 "Cronómetro - Etapa 5".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 40 "Etapa 6: Refinando el Prompt".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Con base en la retroalimentación recibida, ajusten su priming prompt. Asegúrense de aclarar instrucciones, agregar ejemplos si es necesario, y corregir cualquier área identificada como problemática. La meta es que el chatbot mejore notablemente en precisión y utilidad."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (3 minutos):</strong> Proyectar Diapositiva 41 "Cronómetro - Etapa 6".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 42 "Etapa 7: Pruebas y Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Realicen pruebas finales con su chatbot refinado para observar mejoras en las respuestas. Luego reflexionen sobre cómo los cambios realizados en el prompt afectaron el comportamiento de la IA. Discutan en equipo qué aprendieron durante este proceso y cómo podrían aplicar este conocimiento en futuros proyectos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (5 minutos):</strong> Proyectar Diapositiva 43 "Cronómetro - Etapa 7".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 17 (0.5 minutos):</strong> Proyectar Diapositiva 44 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy completamos todos los objetivos de la misión. Aprendimos a crear priming prompts efectivos, analizamos preguntas comunes, probamos y ajustamos un chatbot, y reflexionamos sobre cómo mejorar su desempeño. ¡Gran trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 18 (0.5 minutos):</strong> Proyectar Diapositiva 45 "You’ve Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Su dedicación y creatividad al entrenar y perfeccionar el chatbot han sido impresionantes. Se merecen Mon-e por todo su esfuerzo. ¡Gran trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🎁 Actividad 7: Easter Egg ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Una pregunta sorpresa para reflexionar y ganar Mon-e.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 46 "Easter Egg - Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de nuestro Easter Egg. Les haré una pregunta y quiero que levanten la mano si saben la respuesta. Recuerden, no digan la respuesta en voz alta. Escogeré a tres de ustedes para escuchar sus respuestas al oído. ¿Listos?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 47 "Pregunta del Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Aquí está la pregunta: 'De acuerdo con el fenómeno psicológico conocido como Priming, si ves la palabra 'amarillo' y luego te preguntan por un tipo de fruta, ¿en qué fruta es más probable que vayas a pensar?'"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 48 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, Genios. Escucharé las respuestas de tres de ustedes. Uno, ven aquí y dime tu respuesta al oído. Ahora tú, dos. Y por último, tres. La respuesta correcta es: ¡plátano! Este es un ejemplo clásico del efecto de priming. ¡Excelente trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🙏 Actividad 8: Honor de Dojo ⏰ Tiempo: 1 minuto</div>
+        <div class="subtitle">Cierre de la misión y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 49 "Honor de Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos llegado al final de nuestra misión. Antes de irnos, cada equipo pase al frente y entregue las Magic Tablets. Asegurémonos de dejar el espacio limpio y organizado para las siguientes aventuras."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
